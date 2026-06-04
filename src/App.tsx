@@ -24,7 +24,7 @@ export const App = () => {
     if (!LS.getItem(LSKeys.UserId, null)) {
       LS.setItem(LSKeys.UserId, Date.now());
     }
-    window.gtag('event', '7796_landing_impression', { var: 'var2' });
+    window.gtag('event', '7953_landing_impression', { var: 'var2' });
   }, []);
 
   const categories = Array.from(new Set(stocks.map(item => item.category)));
@@ -43,7 +43,7 @@ export const App = () => {
           <PureCell
             className={appSt.box}
             onClick={() => {
-              window.gtag('event', '7796_about_click', { var: 'var2' });
+              window.gtag('event', '7953_about_click', { var: 'var2' });
 
               setOpenBs(true);
             }}
@@ -75,7 +75,7 @@ export const App = () => {
               <PureCell
                 key={item.ISIN + item.name}
                 onClick={() => {
-                  window.gtag('event', '7796_product_click', {
+                  window.gtag('event', '7953_product_click', {
                     var: 'var2',
                     answer: item.name,
                     section: 'Все типы',
@@ -114,7 +114,7 @@ export const App = () => {
           <Button
             view="primary"
             onClick={() => {
-              window.gtag('event', '7796_show_all_click', { var: 'var2', answer: 'ОПИФ' });
+              window.gtag('event', '7953_show_all_click', { var: 'var2', answer: 'ОПИФ' });
               setView('all-O');
             }}
           >
@@ -137,7 +137,7 @@ export const App = () => {
               <PureCell
                 key={item.ISIN + item.name}
                 onClick={() => {
-                  window.gtag('event', '7796_product_click', {
+                  window.gtag('event', '7953_product_click', {
                     var: 'var2',
                     answer: item.name,
                     section: 'Все типы',
@@ -176,7 +176,7 @@ export const App = () => {
           <Button
             view="primary"
             onClick={() => {
-              window.gtag('event', '7796_show_all_click', { var: 'var2', answer: 'БПИФ' });
+              window.gtag('event', '7953_show_all_click', { var: 'var2', answer: 'БПИФ' });
               setView('all-B');
             }}
           >
@@ -185,7 +185,7 @@ export const App = () => {
           <Button
             view="primary"
             onClick={() => {
-              window.gtag('event', '7796_ba_open_click', { var: 'var2' });
+              window.gtag('event', '7953_ba_open_click', { var: 'var2' });
               const link = 'alfabank://multistep-route?version=2&fromModule=FORM&alias=brokerage-account-open-alias';
 
               window.location.replace(link);
@@ -221,7 +221,7 @@ export const App = () => {
               <PureCell
                 key={item.ISIN + item.name}
                 onClick={() => {
-                  window.gtag('event', '7796_product_click', {
+                  window.gtag('event', '7953_product_click', {
                     var: 'var2',
                     answer: item.name,
                     section: category,
@@ -269,7 +269,7 @@ export const App = () => {
               <PureCell
                 key={item.ISIN + item.name}
                 onClick={() => {
-                  window.gtag('event', '7796_product_click', {
+                  window.gtag('event', '7953_product_click', {
                     var: 'var2',
                     answer: item.name,
                     section: category,
@@ -325,7 +325,7 @@ export const App = () => {
             <PureCell
               key={item.ISIN + item.name}
               onClick={() => {
-                window.gtag('event', '7796_product_click', {
+                window.gtag('event', '7953_product_click', {
                   var: 'var2',
                   answer: item.name,
                   section: 'Все опифы',
@@ -394,7 +394,7 @@ export const App = () => {
             <PureCell
               key={item.ISIN + item.name}
               onClick={() => {
-                window.gtag('event', '7796_product_click', {
+                window.gtag('event', '7953_product_click', {
                   var: 'var2',
                   answer: item.name,
                   section: 'Все бпифы',
@@ -428,7 +428,7 @@ export const App = () => {
             view="primary"
             size={56}
             onClick={() => {
-              window.gtag('event', '7796_show_all_fonds_click', { var: 'var2' });
+              window.gtag('event', '7953_show_all_fonds_click', { var: 'var2' });
 
               setView('cats');
             }}
@@ -457,7 +457,7 @@ export const App = () => {
               <Tag
                 checked={category === 'all'}
                 onClick={() => {
-                  window.gtag('event', '7796_tab_click', { var: 'var2', answer: 'Все типы' });
+                  window.gtag('event', '7953_tab_click', { var: 'var2', answer: 'Все типы' });
                   setCategory('all');
                 }}
                 view={category !== 'all' ? 'filled' : undefined}
@@ -471,7 +471,7 @@ export const App = () => {
                   key={cat}
                   checked={category === cat}
                   onClick={() => {
-                    window.gtag('event', '7796_tab_click', { var: 'var2', answer: cat });
+                    window.gtag('event', '7953_tab_click', { var: 'var2', answer: cat });
 
                     setCategory(cat);
                   }}

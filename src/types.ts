@@ -6,5 +6,5 @@ export type StockItem = {
   icon: string;
   profit: string;
   minSum: number;
-  ISIN: string;
+  ticker: string;
 };

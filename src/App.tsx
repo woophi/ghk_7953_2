@@ -73,7 +73,7 @@ export const App = () => {
           <div className={appSt.boxCard}>
             {topOpifs.map(item => (
               <PureCell
-                key={item.ISIN + item.name}
+                key={item.ticker + item.name}
                 onClick={() => {
                   window.gtag('event', '7953_product_click', {
                     var: 'var2',
@@ -83,7 +83,7 @@ export const App = () => {
                   window.location.replace(item.link);
                 }}
                 className={appSt.topProfit({
-                  selected: topOpifs.sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit))[0].ISIN === item.ISIN,
+                  selected: topOpifs.sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit))[0].ticker === item.ticker,
                 })}
               >
                 <PureCell.Graphics verticalAlign="center">
@@ -135,7 +135,7 @@ export const App = () => {
           <div className={appSt.boxCard}>
             {topBpifs.map(item => (
               <PureCell
-                key={item.ISIN + item.name}
+                key={item.ticker + item.name}
                 onClick={() => {
                   window.gtag('event', '7953_product_click', {
                     var: 'var2',
@@ -145,7 +145,7 @@ export const App = () => {
                   window.location.replace(item.link);
                 }}
                 className={appSt.topProfit({
-                  selected: topBpifs.sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit))[0].ISIN === item.ISIN,
+                  selected: topBpifs.sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit))[0].ticker === item.ticker,
                 })}
               >
                 <PureCell.Graphics verticalAlign="center">
@@ -219,7 +219,7 @@ export const App = () => {
 
             {stocksO.map(item => (
               <PureCell
-                key={item.ISIN + item.name}
+                key={item.ticker + item.name}
                 onClick={() => {
                   window.gtag('event', '7953_product_click', {
                     var: 'var2',
@@ -267,7 +267,7 @@ export const App = () => {
 
             {stocksB.map(item => (
               <PureCell
-                key={item.ISIN + item.name}
+                key={item.ticker + item.name}
                 onClick={() => {
                   window.gtag('event', '7953_product_click', {
                     var: 'var2',
@@ -323,7 +323,7 @@ export const App = () => {
 
           {stocksO.map(item => (
             <PureCell
-              key={item.ISIN + item.name}
+              key={item.ticker + item.name}
               onClick={() => {
                 window.gtag('event', '7953_product_click', {
                   var: 'var2',
@@ -392,7 +392,7 @@ export const App = () => {
 
           {stocksB.map(item => (
             <PureCell
-              key={item.ISIN + item.name}
+              key={item.ticker + item.name}
               onClick={() => {
                 window.gtag('event', '7953_product_click', {
                   var: 'var2',

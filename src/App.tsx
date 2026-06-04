@@ -83,6 +83,7 @@ export const App = () => {
                     var: 'var2',
                     answer: item.name,
                     section: 'Все типы',
+                    dimension_1: 'ОПИФ',
                   });
                   window.location.replace(item.link);
                 }}
@@ -145,6 +146,7 @@ export const App = () => {
                     var: 'var2',
                     answer: item.name,
                     section: 'Все типы',
+                    dimension_1: 'БПИФ',
                   });
                   window.location.replace(item.link);
                 }}
@@ -229,6 +231,7 @@ export const App = () => {
                     var: 'var2',
                     answer: item.name,
                     section: category,
+                    dimension_1: 'ОПИФ',
                   });
                   window.location.replace(item.link);
                 }}
@@ -277,6 +280,7 @@ export const App = () => {
                     var: 'var2',
                     answer: item.name,
                     section: category,
+                    dimension_1: 'БПИФ',
                   });
                   window.location.replace(item.link);
                 }}
@@ -333,6 +337,7 @@ export const App = () => {
                   var: 'var2',
                   answer: item.name,
                   section: 'Все опифы',
+                  dimension_1: 'ОПИФ',
                 });
                 window.location.replace(item.link);
               }}
@@ -363,6 +368,7 @@ export const App = () => {
             view="primary"
             size={56}
             onClick={() => {
+              window.gtag('event', '7953_show_all_fonds_click', { var: 'var2', dimension_1: 'ОПИФ' });
               setView('cats');
             }}
             block
@@ -402,6 +408,7 @@ export const App = () => {
                   var: 'var2',
                   answer: item.name,
                   section: 'Все бпифы',
+                  dimension_1: 'БПИФ',
                 });
                 window.location.replace(item.link);
               }}
@@ -432,7 +439,7 @@ export const App = () => {
             view="primary"
             size={56}
             onClick={() => {
-              window.gtag('event', '7953_show_all_fonds_click', { var: 'var2' });
+              window.gtag('event', '7953_show_all_fonds_click', { var: 'var2', dimension_1: 'БПИФ' });
 
               setView('cats');
             }}
@@ -511,6 +518,7 @@ export const App = () => {
               view="primary"
               size={56}
               onClick={() => {
+                window.gtag('event', '7953_show_all_fonds_click', { var: 'var2', dimension_1: category });
                 setCategory('all');
               }}
               block

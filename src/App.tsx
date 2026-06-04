@@ -6,6 +6,7 @@ import { Tag } from '@alfalab/core-components/tag/cssm';
 import { Typography } from '@alfalab/core-components/typography/cssm';
 import { ChevronRightMIcon } from '@alfalab/icons-glyph/ChevronRightMIcon';
 import { useEffect, useMemo, useState } from 'react';
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import smileImg from './assets/smile.png';
 import { useStocksData } from './hooks/useStocksData';
@@ -32,8 +33,11 @@ export const App = () => {
   const viewByCategory = useMemo(() => {
     if (category === 'all') {
       const topBpifs = stocks.filter(item => item.type === 'B').slice(0, 3);
+      const topBpifsSorted = [...topBpifs].sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit));
 
       const topOpifs = stocks.filter(item => item.type === 'O').slice(0, 3);
+      const topOpifsSorted = [...topOpifs].sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit));
+
       return (
         <>
           <Typography.Text view="primary-medium" color="secondary">
@@ -71,9 +75,9 @@ export const App = () => {
           </Typography.Text>
 
           <div className={appSt.boxCard}>
-            {topOpifs.map(item => (
+            {topOpifs.map((item, index) => (
               <PureCell
-                key={item.ticker + item.name}
+                key={index}
                 onClick={() => {
                   window.gtag('event', '7953_product_click', {
                     var: 'var2',
@@ -83,7 +87,7 @@ export const App = () => {
                   window.location.replace(item.link);
                 }}
                 className={appSt.topProfit({
-                  selected: topOpifs.sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit))[0].ticker === item.ticker,
+                  selected: topOpifsSorted[0].ticker === item.ticker,
                 })}
               >
                 <PureCell.Graphics verticalAlign="center">
@@ -133,9 +137,9 @@ export const App = () => {
           </Typography.Text>
 
           <div className={appSt.boxCard}>
-            {topBpifs.map(item => (
+            {topBpifs.map((item, index) => (
               <PureCell
-                key={item.ticker + item.name}
+                key={index}
                 onClick={() => {
                   window.gtag('event', '7953_product_click', {
                     var: 'var2',
@@ -145,7 +149,7 @@ export const App = () => {
                   window.location.replace(item.link);
                 }}
                 className={appSt.topProfit({
-                  selected: topBpifs.sort((a, b) => parseFloat(b.profit) - parseFloat(a.profit))[0].ticker === item.ticker,
+                  selected: topBpifsSorted[0].ticker === item.ticker,
                 })}
               >
                 <PureCell.Graphics verticalAlign="center">
@@ -452,7 +456,16 @@ export const App = () => {
         </Typography.Text>
 
         <div>
-          <Swiper slidesPerView="auto" spaceBetween={8}>
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={8}
+            modules={[Autoplay]}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: true,
+              pauseOnMouseEnter: true,
+            }}
+          >
             <SwiperSlide style={{ width: 'fit-content' }}>
               <Tag
                 checked={category === 'all'}
@@ -461,6 +474,7 @@ export const App = () => {
                   setCategory('all');
                 }}
                 view={category !== 'all' ? 'filled' : undefined}
+                size={40}
               >
                 Все типы
               </Tag>
@@ -476,6 +490,7 @@ export const App = () => {
                     setCategory(cat);
                   }}
                   view={category !== cat ? 'filled' : undefined}
+                  size={40}
                 >
                   {cat}
                 </Tag>
